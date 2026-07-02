@@ -26,19 +26,19 @@ export function Hologram({
       />
 
       {/* HUD readouts */}
-      <div className="absolute top-4 left-4 font-mono text-[10px] text-cyan/80 leading-tight">
+      <div className="absolute top-2 left-2 sm:top-4 sm:left-4 font-mono text-[9px] sm:text-[10px] text-cyan/80 leading-tight">
         <div>◈ SCAN.ACTIVE</div>
         <div>ID {pad(id)}</div>
-        <div className="text-muted-foreground">SIG {(id * 137 % 9999).toString(16).toUpperCase()}</div>
+        <div className="hidden sm:block text-muted-foreground">SIG {(id * 137 % 9999).toString(16).toUpperCase()}</div>
       </div>
-      <div className="absolute top-4 right-4 font-mono text-[10px] text-cyan/80 text-right leading-tight">
-        <div>PROJECTION 3D</div>
-        <div>FIELD STABLE</div>
+      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 font-mono text-[9px] sm:text-[10px] text-cyan/80 text-right leading-tight">
+        <div className="hidden sm:block">PROJECTION 3D</div>
+        <div className="hidden sm:block">FIELD STABLE</div>
         <div className="text-muted-foreground anim-blink">◉ REC</div>
       </div>
 
       {/* Rings */}
-      <div className="relative w-[min(72vh,520px)] aspect-square flex items-center justify-center">
+      <div className="relative w-[min(78vw,72vh,520px)] aspect-square flex items-center justify-center">
         <div className="absolute inset-0 rounded-full border border-cyan/30 anim-spin-slow"
              style={{ borderStyle: "dashed" }} />
         <div className="absolute inset-6 rounded-full border border-cyan/20 anim-spin-rev" />
@@ -63,7 +63,7 @@ export function Hologram({
           <img
             src={artworkUrl(id)}
             alt={`${titleCase(name)} holographic projection`}
-            className="relative w-[min(52vh,380px)] h-[min(52vh,380px)] object-contain drop-shadow-[0_0_24px_var(--cyan-glow)] anim-flicker"
+            className="relative w-[min(56vw,52vh,380px)] h-[min(56vw,52vh,380px)] object-contain drop-shadow-[0_0_24px_var(--cyan-glow)] anim-flicker"
             loading="eager"
             decoding="async"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.2"; }}
@@ -95,12 +95,12 @@ export function Hologram({
       </div>
 
       {/* Name plate */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-        <div className="font-mono text-xs text-cyan/70 tracking-[0.4em]">#{pad(id)}</div>
-        <div className="text-3xl md:text-4xl font-bold tracking-wide neon-text">
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 text-center px-2 w-full">
+        <div className="font-mono text-[10px] sm:text-xs text-cyan/70 tracking-[0.3em] sm:tracking-[0.4em]">#{pad(id)}</div>
+        <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide neon-text truncate">
           {titleCase(name)}
         </div>
-        <div className="mt-2 flex gap-1.5 justify-center">
+        <div className="mt-1.5 sm:mt-2 flex flex-wrap gap-1.5 justify-center">
           {types.map((t) => (
             <span key={t} className={`type-${t} px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wide`}>
               {t}

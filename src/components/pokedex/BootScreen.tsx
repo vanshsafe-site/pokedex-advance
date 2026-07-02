@@ -27,9 +27,9 @@ export function BootScreen({ onDone }: { onDone: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
-      <div className="w-[min(560px,92vw)] font-mono text-sm">
-        <div className="mb-4 text-cyan neon-text text-lg">◈ POKÉDEX NEO</div>
-        <div className="glass hud-corner p-5 min-h-64">
+      <div className="w-[min(560px,92vw)] font-mono text-xs sm:text-sm">
+        <div className="mb-3 sm:mb-4 text-cyan neon-text text-base sm:text-lg">◈ POKÉDEX NEO</div>
+        <div className="glass hud-corner p-4 sm:p-5 min-h-48 sm:min-h-64">
           {shown.map((l, i) => (
             <div key={i} className="anim-fade text-cyan/90">{l}</div>
           ))}

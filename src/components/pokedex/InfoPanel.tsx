@@ -57,7 +57,7 @@ export function InfoPanel({ id, onSelect }: { id: number; onSelect: (id: number)
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`px-3 py-2 text-xs font-mono uppercase tracking-wider border-b-2 whitespace-nowrap transition-colors ${
+            className={`px-3 py-2.5 min-h-[40px] text-xs font-mono uppercase tracking-wider border-b-2 whitespace-nowrap transition-colors ${
               tab === t ? "border-cyan text-cyan" : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -154,7 +154,7 @@ function StatsTab({ pk, sp, effectiveness }: any) {
       </Section>
 
       <Section title="TYPE MATRIX">
-        <div className="grid grid-cols-2 gap-3 text-xs">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3 text-xs">
           <EffList label="× 4 WEAK" list={effectiveness["4"]} className="text-destructive" />
           <EffList label="× 2 WEAK" list={effectiveness["2"]} className="text-destructive/80" />
           <EffList label="× ½ RES" list={effectiveness["0.5"]} className="text-cyan" />
@@ -286,17 +286,17 @@ function MovesTab({ pk }: any) {
 
   return (
     <div className="space-y-2">
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Filter moves..."
-          className="flex-1 bg-input/70 border border-border rounded px-2 py-1 text-xs outline-none focus:ring-1 focus:ring-cyan"
+          className="flex-1 min-w-[120px] bg-input/70 border border-border rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-cyan"
         />
         <select
           value={method}
           onChange={(e) => setMethod(e.target.value)}
-          className="bg-input/70 border border-border rounded px-2 py-1 text-xs outline-none"
+          className="bg-input/70 border border-border rounded px-2 py-1.5 text-xs outline-none"
         >
           <option value="all">All</option>
           <option value="level-up">Level</option>
@@ -438,7 +438,7 @@ function SpritesTab({ pk }: any) {
   add("Showdown", s.other?.showdown?.front_default);
 
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+    <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 gap-2">
       {items.map((it) => (
         <div key={it.label} className="border border-border/60 rounded p-2 text-center bg-cyan/5">
           <img src={it.src} alt={it.label} loading="lazy" className="w-full h-20 object-contain" style={{ imageRendering: "pixelated" }} />

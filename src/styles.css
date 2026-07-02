@@ -76,7 +76,27 @@
       radial-gradient(ellipse at bottom, oklch(0.2 0.08 260 / 0.25), transparent 60%);
     background-attachment: fixed;
     overflow: hidden;
+    /* iOS momentum scrolling for nested panels + safe-area support */
+    -webkit-overflow-scrolling: touch;
   }
+}
+
+@supports (padding: max(0px)) {
+  .safe-top { padding-top: max(0.5rem, env(safe-area-inset-top)); }
+  .safe-bottom { padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
+}
+
+/* Smaller HUD corners on phones so they don't eat content */
+@media (max-width: 640px) {
+  .hud-corner::before,
+  .hud-corner::after { width: 8px; height: 8px; }
+  .hud-corner::before { top: 4px; left: 4px; }
+  .hud-corner::after { bottom: 4px; right: 4px; }
+}
+
+/* Prevent iOS zoom-on-focus: inputs/selects need >=16px font on mobile */
+@media (max-width: 640px) {
+  input, select { font-size: 16px !important; }
 }
 
 @utility glass {

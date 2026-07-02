@@ -82,7 +82,7 @@ export function Sidebar({ selectedId, onSelect, favorites, recent, onToggleFav }
             value={gen}
             onChange={(e) => setGen(e.target.value === "all" ? "all" : Number(e.target.value))}
             aria-label="Filter by generation"
-            className="bg-input/70 border border-border rounded-md px-1.5 py-1 text-xs outline-none"
+            className="bg-input/70 border border-border rounded-md px-1.5 py-2 sm:py-1 text-xs outline-none min-h-[36px]"
           >
             <option value="all">All Gens</option>
             {GENERATIONS.map((g) => <option key={g.id} value={g.id}>{g.name}</option>)}
@@ -91,7 +91,7 @@ export function Sidebar({ selectedId, onSelect, favorites, recent, onToggleFav }
             value={type}
             onChange={(e) => setType(e.target.value)}
             aria-label="Filter by type"
-            className="bg-input/70 border border-border rounded-md px-1.5 py-1 text-xs outline-none capitalize"
+            className="bg-input/70 border border-border rounded-md px-1.5 py-2 sm:py-1 text-xs outline-none capitalize min-h-[36px]"
           >
             <option value="all">All Types</option>
             {TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -102,7 +102,7 @@ export function Sidebar({ selectedId, onSelect, favorites, recent, onToggleFav }
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`flex-1 py-1 border-b-2 transition-colors ${
+              className={`flex-1 py-2 sm:py-1 min-h-[36px] border-b-2 transition-colors ${
                 tab === t ? "border-cyan text-cyan" : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -118,12 +118,12 @@ export function Sidebar({ selectedId, onSelect, favorites, recent, onToggleFav }
             <button
               key={p.id}
               onClick={() => onSelect(p.id)}
-              className={`group w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-left transition-colors ${
+              className={`group w-full flex items-center gap-2 px-2 py-2 sm:py-1.5 min-h-[48px] rounded-md text-left transition-colors ${
                 active
                   ? "bg-cyan/15 text-foreground ring-1 ring-cyan/60 shadow-[0_0_16px_-4px_var(--cyan-glow)]"
-                  : "hover:bg-cyan/5"
+                  : "hover:bg-cyan/5 active:bg-cyan/10"
               }`}
-              style={{ contentVisibility: "auto", containIntrinsicSize: "44px" }}
+              style={{ contentVisibility: "auto", containIntrinsicSize: "48px" }}
             >
               <img
                 src={spriteUrl(p.id)}
@@ -143,7 +143,7 @@ export function Sidebar({ selectedId, onSelect, favorites, recent, onToggleFav }
                 onClick={(e) => { e.stopPropagation(); onToggleFav(p.id); }}
                 role="button"
                 aria-label="Favorite"
-                className={`p-1 rounded ${favorites.has(p.id) ? "text-orange-accent" : "text-muted-foreground/40 hover:text-cyan"}`}
+                className={`p-2.5 -m-1 rounded ${favorites.has(p.id) ? "text-orange-accent" : "text-muted-foreground/40 hover:text-cyan"}`}
               >
                 <Star className="w-3.5 h-3.5" fill={favorites.has(p.id) ? "currentColor" : "none"} />
               </span>
